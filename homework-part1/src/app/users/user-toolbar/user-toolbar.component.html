@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Test</span>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <!-- <mat-icon>more_vert</mat-icon> -->
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="selectAll()">Select All</button>
+      <button mat-menu-item (click)="deleteSelected()">Delete Selected</button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
