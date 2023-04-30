@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 // import { MatExpansionModule } from '@angular/material/expansion';
 // import { MatTableModule } from '@angular/material/table';
 
@@ -19,6 +20,7 @@ const MaterialComponents = [
   MatButtonModule,
   FormsModule,
   MatFormFieldModule,
+  MatInputModule,
   MatSelectModule,
   // MatSortModule,
   // MatExpansionModule,
