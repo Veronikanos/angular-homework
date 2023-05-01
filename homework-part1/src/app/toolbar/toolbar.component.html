@@ -1,6 +1,11 @@
 <mat-toolbar class="toolbar">
   <button mat-button (click)="buttonClick()">Select All</button>
-  <button mat-raised-button color="warn" [disabled]="!isAnyChecked">
+  <button
+    mat-raised-button
+    color="warn"
+    [disabled]="!isAnyChecked"
+    (click)="onDelete()"
+  >
     Delete
   </button>
 

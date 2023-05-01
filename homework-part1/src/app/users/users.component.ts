@@ -44,4 +44,10 @@ export class UsersComponent {
   updateDeleteButtonState(): void {
     this.isAnyChecked = this.users.some((user) => user.selected === true);
   }
+
+  deleteSelected(): void {
+    console.log('delete');
+    this.users = this.users.filter((user) => !user.selected);
+    this.updateDeleteButtonState();
+  }
 }

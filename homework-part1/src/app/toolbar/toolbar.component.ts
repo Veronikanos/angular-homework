@@ -8,8 +8,13 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 export class ToolbarComponent {
   @Output() selectAll = new EventEmitter<void>();
   @Input() isAnyChecked: boolean = true;
+  @Output() deleteSelected = new EventEmitter<void>();
 
   buttonClick(): void {
     this.selectAll.emit();
+  }
+
+  onDelete(): void {
+    this.deleteSelected.emit();
   }
 }
