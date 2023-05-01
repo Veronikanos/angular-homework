@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,6 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ToolbarComponent {
   @Output() selectAll = new EventEmitter<void>();
+  @Input() isAnyChecked: boolean = true;
 
   buttonClick(): void {
     this.selectAll.emit();

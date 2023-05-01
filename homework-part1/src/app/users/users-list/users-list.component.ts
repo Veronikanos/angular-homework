@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { IUsers } from '../users.component';
 
 @Component({
@@ -10,11 +10,14 @@ export class UsersListComponent implements OnInit {
   @Input()
   users: IUsers[] = [];
 
+  @Output()
+  userSelected = new EventEmitter<IUsers>();
+
   constructor() {}
 
   ngOnInit(): void {}
 
-	selectAll(): void {
-    this.users.forEach((user) => (user.selected = true));
+	onUserSelected(user: IUsers): void {
+    this.userSelected.emit(user);
   }
 }

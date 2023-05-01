@@ -1,11 +1,8 @@
 <mat-toolbar class="toolbar">
-  <button mat-button (click)="buttonClick">Select All</button>
-  <!-- <button mat-button disabled>Delete</button> -->
-
-  <app-delete-button></app-delete-button>
-  <!-- <mat-action-row>
-    <button mat-button color="primary">Next</button>
-  </mat-action-row> -->
+  <button mat-button (click)="buttonClick()">Select All</button>
+  <button mat-raised-button color="warn" [disabled]="!isAnyChecked">
+    Delete
+  </button>
 
   <mat-form-field appearance="fill">
     <mat-label>Select</mat-label>

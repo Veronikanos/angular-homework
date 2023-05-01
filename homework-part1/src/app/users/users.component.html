@@ -3,5 +3,12 @@
 </mat-toolbar> -->
 <h2>USERS COMPONENT</h2>
 
-<app-toolbar (selectAll)="usersList.selectAll()"></app-toolbar>
-<app-users-list #usersList [users]="users"></app-users-list>
+<app-toolbar
+  (selectAll)="selectAll()"
+  [isAnyChecked]="isAnyChecked"
+></app-toolbar>
+<app-users-list
+  #usersList
+  [users]="users"
+  (userSelected)="updateDeleteButtonState()"
+></app-users-list>

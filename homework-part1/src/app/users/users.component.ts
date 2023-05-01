@@ -18,6 +18,7 @@ export interface IUsers {
 })
 export class UsersComponent {
   users: IUsers[] = [];
+  isAnyChecked = false;
 
   constructor() {}
 
@@ -34,7 +35,13 @@ export class UsersComponent {
     }
   }
 
-  buttonClick() {
+  selectAll(): void {
+    console.log('select All');
     this.users.forEach((user) => (user.selected = true));
+    this.updateDeleteButtonState();
+  }
+
+  updateDeleteButtonState(): void {
+    this.isAnyChecked = this.users.some((user) => user.selected === true);
   }
 }
