@@ -1,15 +1,13 @@
-<!-- <mat-toolbar color="primary">
-  <span>Angular lecture 1</span>
-</mat-toolbar> -->
-<h2>USERS COMPONENT</h2>
-
 <app-toolbar
   (selectAll)="selectAll()"
   (deleteSelected)="deleteSelected()"
   [isAnyChecked]="isAnyChecked"
+  [users]="users"
+  (saveSearchInput)="saveSearchInput($event)"
 ></app-toolbar>
 <app-users-list
   #usersList
   [users]="users"
+  [searchValue]="searchValue"
   (userSelected)="updateDeleteButtonState()"
 ></app-users-list>

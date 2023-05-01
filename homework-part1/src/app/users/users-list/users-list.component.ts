@@ -9,6 +9,7 @@ import { IUsers } from '../users.component';
 export class UsersListComponent implements OnInit {
   @Input()
   users: IUsers[] = [];
+  @Input() searchValue: string = '';
 
   @Output()
   userSelected = new EventEmitter<IUsers>();
@@ -17,7 +18,7 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-	onUserSelected(user: IUsers): void {
+  onUserSelected(user: IUsers): void {
     this.userSelected.emit(user);
   }
 }

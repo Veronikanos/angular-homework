@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Injectable } from '@angular/core';
 import { faker } from '@faker-js/faker';
 
 export interface IUsers {
@@ -19,6 +18,7 @@ export interface IUsers {
 export class UsersComponent {
   users: IUsers[] = [];
   isAnyChecked = false;
+  searchValue: string = '';
 
   constructor() {}
 
@@ -36,7 +36,6 @@ export class UsersComponent {
   }
 
   selectAll(): void {
-    console.log('select All');
     this.users.forEach((user) => (user.selected = true));
     this.updateDeleteButtonState();
   }
@@ -46,8 +45,12 @@ export class UsersComponent {
   }
 
   deleteSelected(): void {
-    console.log('delete');
     this.users = this.users.filter((user) => !user.selected);
     this.updateDeleteButtonState();
+  }
+
+  saveSearchInput(filtered: string): void {
+    this.searchValue = filtered;
+    // console.log(this.searchValue);
   }
 }

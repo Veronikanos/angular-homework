@@ -1,17 +1,28 @@
-<div class="card-container">
-  <mat-card class="user-card" *ngFor="let user of users">
-    <mat-card-header>
-      <mat-card-title>{{ user.firstname }} {{ user.lastname }}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>{{ user.email }}</p>
-      <p>{{ user.phone }}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <mat-checkbox
-        [(ngModel)]="user.selected"
-        (change)="onUserSelected(user)"
-      ></mat-checkbox>
-    </mat-card-actions>
-  </mat-card>
+<div *ngFor="let user of users">
+  <div
+    class="card-container"
+    *ngIf="
+      searchValue === '' ||
+      user.firstname.toLowerCase().includes(searchValue) ||
+      user.lastname.toLowerCase().includes(searchValue)
+    "
+  >
+    <mat-card class="user-card">
+      <mat-card-header>
+        <mat-card-title
+          >{{ user.firstname }} {{ user.lastname }}</mat-card-title
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ user.email }}</p>
+        <p>{{ user.phone }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <mat-checkbox
+          [(ngModel)]="user.selected"
+          (change)="onUserSelected(user)"
+        ></mat-checkbox>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>

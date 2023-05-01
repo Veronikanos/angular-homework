@@ -1,5 +1,5 @@
 <mat-toolbar class="toolbar">
-  <button mat-button (click)="buttonClick()">Select All</button>
+  <button mat-button (click)="selectAllClick()">Select All</button>
   <button
     mat-raised-button
     color="warn"
@@ -10,15 +10,18 @@
   </button>
 
   <mat-form-field appearance="fill">
-    <mat-label>Select</mat-label>
+    <mat-label>Sorting order</mat-label>
     <mat-select placeholder="Sort">
-      <mat-option value="one">First option</mat-option>
-      <mat-option value="two">Second option</mat-option>
+      <mat-option
+        *ngFor="let item of users[0] | keyvalue"
+        value="{{ item.key }}"
+        >{{ item.key }}</mat-option
+      >
     </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Search Users</mat-label>
-    <input matInput />
+    <mat-label>Search by first/last name</mat-label>
+    <input matInput (keyup)="onKeyup(filtered.value)" #filtered />
   </mat-form-field>
 </mat-toolbar>
