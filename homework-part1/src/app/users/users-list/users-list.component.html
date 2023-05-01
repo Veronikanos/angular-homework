@@ -7,5 +7,8 @@
       <p>{{ user.email }}</p>
       <p>{{ user.phone }}</p>
     </mat-card-content>
+    <mat-card-actions>
+      <mat-checkbox [(ngModel)]="user.selected"></mat-checkbox>
+    </mat-card-actions>
   </mat-card>
 </div>

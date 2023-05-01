@@ -1,6 +1,8 @@
 <mat-toolbar class="toolbar">
-  <button mat-button>Select All</button>
-  <button mat-button disabled>Delete</button>
+  <button mat-button (click)="buttonClick">Select All</button>
+  <!-- <button mat-button disabled>Delete</button> -->
+
+  <app-delete-button></app-delete-button>
   <!-- <mat-action-row>
     <button mat-button color="primary">Next</button>
   </mat-action-row> -->
