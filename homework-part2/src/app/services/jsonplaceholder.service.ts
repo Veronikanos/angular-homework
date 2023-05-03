@@ -7,14 +7,19 @@ import { User } from '../interface/user';
   providedIn: 'root',
 })
 export class JSONPlaceholderService {
+  private apiUrl = `https://jsonplaceholder.typicode.com`;
+
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<User[]> {
-    let url: string = `https://jsonplaceholder.typicode.com/users`;
-    return this.http.get<User[]>(url);
+    return this.http.get<User[]>(`${this.apiUrl}/users`);
   }
 
-  // getUser(): Observable<User> {
-  // 	return this.http.get<User>(`https://jsonplaceholder.typicode.com/users/1`),
-  // }
+  getUser(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/users/1`);
+  }
+
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/users`, user);
+  }
 }
