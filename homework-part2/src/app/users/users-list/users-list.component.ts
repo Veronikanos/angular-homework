@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { IUsers } from '../users.component';
+// import { IUsers } from '../users.component';
 import { User } from 'src/app/interface/user';
 
 @Component({
@@ -14,13 +14,13 @@ export class UsersListComponent implements OnInit {
   @Input() searchValue: string = '';
 
   @Output()
-  userSelected = new EventEmitter<IUsers>();
+  userSelected = new EventEmitter<User>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  onUserSelected(user: IUsers): void {
+  onUserSelected(user: User): void {
     this.userSelected.emit(user);
   }
 }

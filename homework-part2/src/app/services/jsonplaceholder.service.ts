@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../interface/user';
-import {tap} from 'rxjs/operators'
+import { tap } from 'rxjs/operators'
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,14 @@ export class JSONPlaceholderService {
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}/users`).pipe(tap(users => console.log(users)));
+    return this.http.get<User[]>(`${this.apiUrl}/users`).pipe(
+			map(users => users.map(user => ({
+				...user,
+				checked: false,
+
+				
+				name: user.name.toUpperCase()
+			}))));
   }
 
   getUser(): Observable<User> {

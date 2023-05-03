@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../interface/user';
 import { JSONPlaceholderService } from '../services/jsonplaceholder.service';
 
-export interface IUsers {
-  id: number;
-  firstname: string;
-  lastname: string;
-  email: string;
-  phone: string;
-  selected: boolean;
-}
+// export interface IUsers {
+//   id: number;
+//   firstname: string;
+//   lastname: string;
+//   email: string;
+//   phone: string;
+//   selected: boolean;
+// }
 
 @Component({
   selector: 'app-users',
@@ -57,7 +57,8 @@ export class UsersComponent implements OnInit{
 
   onGetUsers(): void {
     this.userService.getUsers().subscribe(
-      (response) => {console.log(response);
+      (response) => {
+				console.log(response);
 			this.users = response},
       (error: any) => console.log(error),
       () => console.log('Getting DONE!')
@@ -74,19 +75,19 @@ export class UsersComponent implements OnInit{
 
 
 
-  // selectAll(): void {
-  //   this.users.forEach((user) => (user.selected = true));
-  //   this.updateDeleteButtonState();
-  // }
+  selectAll(): void {
+    this.users.forEach((user) => (user.selected = true));
+    this.updateDeleteButtonState();
+  }
 
-  // updateDeleteButtonState(): void {
-  //   this.isAnyChecked = this.users.some((user) => user.selected === true);
-  // }
+  updateDeleteButtonState(): void {
+    this.isAnyChecked = this.users.some((user) => user.selected === true);
+  }
 
-  // deleteSelected(): void {
-  //   this.users = this.users.filter((user) => !user.selected);
-  //   this.updateDeleteButtonState();
-  // }
+  deleteSelected(): void {
+    this.users = this.users.filter((user) => !user.selected);
+    this.updateDeleteButtonState();
+  }
 
   saveSearchInput(filtered: string): void {
     this.searchValue = filtered;
