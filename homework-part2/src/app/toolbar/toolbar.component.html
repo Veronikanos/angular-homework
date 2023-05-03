@@ -1,0 +1,27 @@
+<mat-toolbar class="toolbar">
+  <button mat-button (click)="selectAllClick()">Select All</button>
+  <button
+    mat-raised-button
+    color="warn"
+    [disabled]="!isAnyChecked"
+    (click)="onDelete()"
+  >
+    Delete
+  </button>
+
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Sorting order</mat-label>
+    <mat-select placeholder="Sort">
+      <mat-option
+        *ngFor="let item of users[0] | keyvalue"
+        value="{{ item.key }}"
+        >{{ item.key }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field> -->
+
+  <mat-form-field appearance="fill">
+    <mat-label>Search by first/last name</mat-label>
+    <input matInput (keyup)="onKeyup(filtered.value)" #filtered />
+  </mat-form-field>
+</mat-toolbar>
