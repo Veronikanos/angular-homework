@@ -1,3 +1,15 @@
-.user-card {
-  width: fit-content;
+
+.container{
+	width: 50%;
+	display: flex;
+}
+
+.card-container{
+	width: 100%;
+}
+
+.user-card{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }

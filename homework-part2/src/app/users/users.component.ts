@@ -60,8 +60,7 @@ export class UsersComponent implements OnInit{
       (response) => {
 				console.log(response);
 			this.users = response},
-      (error: any) => console.log(error),
-      () => console.log('Getting DONE!')
+      (error: any) => console.log(error)
     );
   }
 
@@ -74,6 +73,12 @@ export class UsersComponent implements OnInit{
   // }
 
 
+  onDeleteUser(index: number): void {
+    this.userService.deleteUser(index).subscribe(
+      (response) => console.log(response),
+      (error: any) => console.log(error)
+    );
+  }
 
   selectAll(): void {
     this.users.forEach((user) => (user.selected = true));
@@ -85,7 +90,15 @@ export class UsersComponent implements OnInit{
   }
 
   deleteSelected(): void {
-    this.users = this.users.filter((user) => !user.selected);
+		const allSelectedUsers: User[] = this.users.filter((user: User) => user.selected);
+		allSelectedUsers.forEach(user => {
+			if (user.id !== undefined) {
+				this.onDeleteUser(user.id);
+			}
+		});
+
+		// render list of users after deleting requests
+		this.users = this.users.filter((user) => !user.selected);
     this.updateDeleteButtonState();
   }
 

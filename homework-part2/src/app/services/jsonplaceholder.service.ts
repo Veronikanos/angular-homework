@@ -18,17 +18,18 @@ export class JSONPlaceholderService {
 			map(users => users.map(user => ({
 				...user,
 				checked: false,
-
-				
-				name: user.name.toUpperCase()
 			}))));
   }
 
-  getUser(): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/users/1`);
-  }
+  // getUser(): Observable<User> {
+  //   return this.http.get<User>(`${this.apiUrl}/users/1`);
+  // }
 
   createUser(user: User): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/users`, user);
+  }
+
+  deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/users/${id}`);
   }
 }
