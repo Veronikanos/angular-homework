@@ -6,14 +6,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { UsersListComponent } from './users-list/users-list.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-// import { MatGridListModule } from '@angular/material/grid-list';
+import { UserFormComponent } from '../user-form/user-form.component';
 
 const MaterialComponents = [
   MatToolbarModule,
@@ -23,21 +23,17 @@ const MaterialComponents = [
   MatSelectModule,
   MatCardModule,
   MatCheckboxModule,
-  // MatGridListModule,
-  // MatSortModule,
-  // MatExpansionModule,
-  // MatTableModule,
 ];
 
 @NgModule({
-  declarations: [ToolbarComponent, UsersComponent, UsersListComponent],
-  imports: [CommonModule, MaterialComponents, FormsModule],
+  declarations: [ToolbarComponent, UsersComponent, UsersListComponent, UserFormComponent],
+  imports: [CommonModule, ...MaterialComponents, FormsModule, ReactiveFormsModule],
   exports: [
     FormsModule,
-    MaterialComponents,
+    ...MaterialComponents,
     ToolbarComponent,
     UsersComponent,
-    UsersListComponent,
+    UsersListComponent, ReactiveFormsModule
   ],
 })
 export class UsersModule {}

@@ -1,6 +1,8 @@
 app-users-list {
   display: flex;
+	flex-direction: column-reverse;
+	justify-content: center; 
+	align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-	justify-content: center;
 }

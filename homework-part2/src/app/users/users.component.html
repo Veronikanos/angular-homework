@@ -5,6 +5,8 @@
   [users]="users"
   (saveSearchInput)="saveSearchInput($event)"
 ></app-toolbar>
+
+<app-user-form (onSubmit)="onCreateUsers($event)"></app-user-form>
 <app-users-list
   #usersList
   [users]="users"

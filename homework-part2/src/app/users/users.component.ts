@@ -2,15 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../interface/user';
 import { JSONPlaceholderService } from '../services/jsonplaceholder.service';
 
-// export interface IUsers {
-//   id: number;
-//   firstname: string;
-//   lastname: string;
-//   email: string;
-//   phone: string;
-//   selected: boolean;
-// }
-
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -24,53 +15,29 @@ export class UsersComponent implements OnInit{
   searchValue: string = '';
 
 
-	// private user: User = {
-	// 		"name": "Veronika T",
-	// 		"username": "Bret",
-	// 		"email": "Sincere@april.biz",
-	// 		"address": {
-	// 			"street": "Kulas Light",
-	// 			"suite": "Apt. 556",
-	// 			"city": "Gwenborough",
-	// 			"zipcode": "92998-3874",
-	// 			"geo": {
-	// 				"lat": "-37.3159",
-	// 				"lng": "81.1496"
-	// 			}
-	// 		},
-	// 		"phone": "1-770-736-8031 x56442",
-	// 		"website": "hildegard.org",
-	// 		"company": {
-	// 			"name": "Romaguera-Crona",
-	// 			"catchPhrase": "Multi-layered client-server neural-net",
-	// 			"bs": "harness real-time e-markets"
-	// 		}
-	// 	};
-	
-
   constructor(private userService: JSONPlaceholderService) {}
 
   ngOnInit(): void {
     this.onGetUsers();
-		// this.onCreateUsers()
   }
 
   onGetUsers(): void {
     this.userService.getUsers().subscribe(
       (response) => {
-				console.log(response);
+				// console.log(response);
 			this.users = response},
       (error: any) => console.log(error)
     );
   }
 
-  // onCreateUsers(): void {
-  //   this.userService.createUser(this.user).subscribe(
-  //     (response) => console.log(response),
-  //     (error: any) => console.log(error),
-  //     () => console.log('Creating NEW USER!')
-  //   );
-  // }
+  onCreateUsers(user: User): void {
+    this.userService.createUser(user).subscribe(
+      (response) => {console.log(response)
+				this.users.push(response);},
+      (error: any) => console.log(error),
+      () => console.log('Creating NEW USER!')
+    );
+  }
 
 
   onDeleteUser(index: number): void {
